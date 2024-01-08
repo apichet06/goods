@@ -1,5 +1,5 @@
 .navbar-underline {
-  border-bottom: 5px solid rgb(230, 16, 16);
+  border-bottom: 4px solid rgb(128, 160, 160);
   /* เส้นใต้สีแดง */
 }
 
@@ -12,4 +12,5 @@
 body {
   padding-top: 5rem;
   background-color: #eff1f0;
+  padding-bottom: 5rem;
 }

@@ -1,31 +1,49 @@
-'use client'
-
 import React from 'react'
-import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap'
-
+import { PiShoppingCart } from "react-icons/pi";
+import Link from 'next/link';
 export default function Navbars() {
     return (
-        <Navbar bg="dark"
-            data-bs-theme="dark"
-            expand="lg"
-            fixed="top"
-            className="shadow navbar-underline">
-            <Container>
-                <Navbar.Brand href="#home">ระบบขายสินค้า Online</Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link href="#pricing">รายการสินค้า</Nav.Link>
-                    </Nav>
-                    <Nav>
-                        <Nav.Link href="#deets">ตระกล้าสินค้า</Nav.Link>
-                        <Nav.Link href="#deets">เกี่ยวกับเรา</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            เข้าสู้ระบบ
-                        </Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+        <>
+
+            <nav className="navbar navbar-expand-lg  shadow navbar-underline fixed-top" style={{ backgroundColor: '#47d147' }}>
+                <div className="container-fluid">
+                    <Link className="navbar-brand" href="/">ระบบขายสินค้า Online</Link>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon" />
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul className="navbar-nav">
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    หมวดหมู่สินค้า
+                                </a>
+                                <ul className="dropdown-menu">
+                                    <li><a className="dropdown-item" href="#">อุปกรณ์คอมพิวเตอร์</a></li>
+                                    <li><a className="dropdown-item" href="#">เครื่องเขียน</a></li>
+                                    <li><a className="dropdown-item" href="#">อุปกรณ์ทั่วไป</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <form className="d-flex">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <a className="nav-link" aria-current="page" href="#"><PiShoppingCart /></a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">เกี่ยวกับเรา</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">เข้าสู้ระบบ</a>
+                            </li>
+                        </ul>
+                    </form>
+
+                </div>
+            </nav>
+
+        </>
+
+
     )
 }

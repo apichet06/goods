@@ -1,9 +1,8 @@
 import React from 'react';
 import { api } from './components/config';
 import axios from 'axios';
-import Image from 'next/image';
-
-
+import Link from 'next/link';
+import { PiShoppingCart } from "react-icons/pi";
 async function getProduct() {
   const response = await axios.get(api + '/products/1/20');
 
@@ -32,7 +31,18 @@ export default async function Page() {
                   </div>
                   <ul className="list-group list-group-flush">
                     <li className="list-group-item"> <strong className="card-title mb-0">{pro.pro_name}</strong></li>
-                    <li className="list-group-item"><strong className='text-danger'>ราคา {pro.pro_sellprice}฿</strong></li>
+                    <li className="list-group-item">
+                      <div className="row">
+                        <div className="col-9">
+                          <strong className='text-danger'>{pro.pro_sellprice}฿</strong>
+                        </div>
+                        <div className="col-3 text-end">
+                          <strong className='text-danger'>
+                            <Link href={`./product/${pro.pro_id}`} className='btn btn-success btn-sm'><PiShoppingCart /></Link>
+                          </strong>
+                        </div>
+                      </div>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -43,7 +53,6 @@ export default async function Page() {
     );
   } catch (error: any) {
     console.error(error.message);
-    // Handle the error, e.g., display an error message to the user
     return <div>Error loading products</div>;
   }
 }

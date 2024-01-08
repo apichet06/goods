@@ -9,13 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
     "axios": "^1.6.2",
     "bootstrap": "^5.3.2",
     "fs": "^0.0.1-security",
     "next": "14.0.4",
     "react": "^18",
     "react-bootstrap": "^2.9.2",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-icons": "^4.12.0"
   },
   "devDependencies": {
     "@types/node": "^20",

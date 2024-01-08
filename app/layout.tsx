@@ -4,6 +4,8 @@ import './globals.css'
 import Navbars from './components/menu/navbars'
 import Footers from './components/menu/footers'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import BootstrapClient from './components/BootstrapClient'
+
 const prompt = Prompt({ subsets: ['latin'], weight: '400' })
 
 export const metadata: Metadata = {
@@ -21,6 +23,7 @@ export default function RootLayout({
       <body className={prompt.className}>
         <Navbars />
         {children}
+        <BootstrapClient />
         <Footers />
       </body>
     </html>
