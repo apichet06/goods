@@ -1,5 +1,5 @@
 .navbar-underline {
-  border-bottom: 4px solid rgb(128, 160, 160);
+  border-bottom: 4px solid rgb(0, 160, 160);
   /* เส้นใต้สีแดง */
 }
 
@@ -7,6 +7,10 @@
   background-color: white;
   /* สีพื้นขาว */
   /* คุณสามารถปรับแต่งสีพื้นและสไตล์อื่น ๆ ตามต้องการ */
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
 }
 
 body {

@@ -3,6 +3,7 @@ import { api } from './components/config';
 import axios from 'axios';
 import Link from 'next/link';
 import { PiShoppingCart } from "react-icons/pi";
+import { BsSearch } from "react-icons/bs";
 async function getProduct() {
   const response = await axios.get(api + '/products/1/20');
 
@@ -20,7 +21,17 @@ export default async function Page() {
     return (
       <>
         <div className='container'>
-          <div className='row'>
+          <div className='row justify-content-center'>
+            <div className="col-md-6">
+              <div className="input-group">
+                <input type="text" className="form-control" placeholder="ค้นหารายการสินค้า" />
+                <div className="input-group-text" id="btnGroupAddon"><BsSearch /></div>
+              </div>
+            </div>
+            <div className="col-md-12">
+              <hr />
+            </div>
+
             {products.map((pro: any, index: any) => (
               <div key={index} className='col-md-2 mb-2'>
                 <div className='card shadow'>

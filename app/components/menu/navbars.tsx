@@ -5,7 +5,7 @@ export default function Navbars() {
     return (
         <>
 
-            <nav className="navbar navbar-expand-lg  shadow navbar-underline fixed-top" style={{ backgroundColor: '#47d147' }}>
+            <nav className="navbar navbar-expand-lg   shadow navbar-underline fixed-top" style={{ backgroundColor: '#1abc9c' }}>
                 <div className="container-fluid">
                     <Link className="navbar-brand" href="/">ระบบขายสินค้า Online</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,9 +24,7 @@ export default function Navbars() {
                                 </ul>
                             </li>
                         </ul>
-                    </div>
-                    <form className="d-flex">
-                        <ul className="navbar-nav">
+                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <a className="nav-link" aria-current="page" href="#"><PiShoppingCart /></a>
                             </li>
@@ -37,7 +35,10 @@ export default function Navbars() {
                                 <a className="nav-link" href="#">เข้าสู้ระบบ</a>
                             </li>
                         </ul>
-                    </form>
+
+                    </div>
+
+
 
                 </div>
             </nav>
