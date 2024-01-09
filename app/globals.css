@@ -12,6 +12,11 @@
 .dropdown:hover .dropdown-menu {
   display: block;
 }
+.custom-card-body {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 body {
   padding-top: 5rem;

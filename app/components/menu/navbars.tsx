@@ -5,7 +5,7 @@ export default function Navbars() {
     return (
         <>
 
-            <nav className="navbar navbar-expand-lg   shadow navbar-underline fixed-top" style={{ backgroundColor: '#1abc9c' }}>
+            <nav className="navbar navbar-expand-lg   shadow navbar-underline fixed-top" style={{ backgroundColor: '#E1E1E1' }}>
                 <div className="container-fluid">
                     <Link className="navbar-brand" href="/">ระบบขายสินค้า Online</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,14 @@ export default function Navbars() {
                         </ul>
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link" aria-current="page" href="#"><PiShoppingCart /></a>
+
+                                <Link className="nav-link position-relative" href="#">
+                                    <PiShoppingCart />
+                                    <span className="position-absolute start-100 translate-middle badge rounded-pill bg-danger">
+                                        0 <span className="visually-hidden">unread messages</span>
+                                    </span>
+                                </Link>
+
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#">เกี่ยวกับเรา</a>
@@ -37,8 +44,6 @@ export default function Navbars() {
                         </ul>
 
                     </div>
-
-
 
                 </div>
             </nav>

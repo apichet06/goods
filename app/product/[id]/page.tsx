@@ -37,9 +37,6 @@ export default async function Page({ params }: PageProps) {
     const productType = await GetProducttype(data.product_type_id)
 
 
-
-
-
     return (
         <>
             <div className='container'>
