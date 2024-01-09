@@ -97,7 +97,7 @@ export default async function Page({ params }: PageProps) {
                                 <hr />
                             </div>
                             <div className="col-md-6 mb-3">
-                                <div className="card  ">
+                                <div className="card">
                                     <div className="card-body">
                                         <h5>รายละเอียดสินค้า</h5><hr />
                                         <h6>{data.pro_description}</h6>
