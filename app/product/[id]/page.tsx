@@ -36,6 +36,10 @@ export default async function Page({ params }: PageProps) {
     const data = await GetProductID(id)
     const productType = await GetProducttype(data.product_type_id)
 
+
+
+
+
     return (
         <>
             <div className='container'>
@@ -45,7 +49,7 @@ export default async function Page({ params }: PageProps) {
                             <div className="col-md-6 mb-3">
                                 <div className="card">
                                     <div className="card-body">
-                                        <div id="carouselExampleFade" className="carousel slide carousel-fade">
+                                        <div id="carouselExampleFade" className="carousel slide" data-bs-ride="true">
                                             <div className="carousel-inner">
                                                 {data.images.map((image: any, index: any) => (
                                                     <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
@@ -77,15 +81,13 @@ export default async function Page({ params }: PageProps) {
                                         <div className="row justify-content-center  g-3 align-items-center">
                                             <div className="col-md-5">
                                                 <div className="input-group">
-                                                    <button type="button" className="btn btn-success btn-sm">-</button>
-                                                    <input type="text" className="form-control text-center form-control-sm" value={1} name='qty' />
-                                                    <button type="button" className="btn btn-success btn-sm">+</button>
+                                                    <button type="button" className="btn btn-success btn-sm" >-</button>
+                                                    <input type="text" className="form-control text-center form-control-sm" value={1} name='qty' readOnly />
+                                                    <button type="button" className="btn btn-success btn-sm" >+</button>
                                                 </div>
                                             </div>
-                                            <div className="col-auto">
-                                                <span id="passwordHelpInline" className="form-text">
-                                                    หน่วยนับ: {data.unit_name}
-                                                </span>
+                                            <div className="col-12 text-center">
+                                                <div className="btn btn-success">เพิ่มสินค้าในตระกล้า</div>
                                             </div>
                                         </div>
                                     </div>
