@@ -5,6 +5,8 @@ import Navbars from './components/menu/navbars'
 import Footers from './components/menu/footers'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BootstrapClient from './components/BootstrapClient'
+import { AppWrapper } from './components/qtyContext'
+
 
 const prompt = Prompt({ subsets: ['latin'], weight: '400' })
 
@@ -21,10 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={prompt.className}>
-        <Navbars />
-        {children}
-        <BootstrapClient />
-        <Footers />
+        <AppWrapper>
+          <Navbars />
+          {children}
+          <BootstrapClient />
+          <Footers />
+        </AppWrapper>
       </body>
     </html>
   )

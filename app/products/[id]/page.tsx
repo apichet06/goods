@@ -5,6 +5,8 @@ import axios from 'axios';
 import Link from 'next/link';
 import React, { useCallback, useEffect, useState } from 'react';
 import { PiShoppingCart } from 'react-icons/pi';
+import { ProductServer } from '../productServer';
+
 
 // Define the pageProps interface
 interface PageProps {
@@ -15,6 +17,7 @@ interface PageProps {
 
 // Define the Products interface
 interface Products {
+    id: number
     pro_id: string;
     pro_name: string;
     pro_description: string;
@@ -25,6 +28,7 @@ interface Products {
 }
 
 interface ProductType {
+    id: number
     pro_id: string;
     pro_name: string;
     pro_sellprice: string;
@@ -37,9 +41,26 @@ export default function Page({ params }: PageProps) {
     // Destructure the id from params
     const { id } = params;
 
+
+
     // State for storing product data
     const [data, setData] = useState<Products | null>(null);
     const [dataType, setDataType] = useState<ProductType[]>([]);
+    const [quantity, setQuantity] = useState(1);
+
+    const decreaseQuantity = () => {
+        // Logic to decrease the quantity
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
+    };
+
+    const increaseQuantity = () => {
+        // Logic to increase the quantity
+        setQuantity(quantity + 1);
+    };
+
+
     const fetchData = useCallback(async () => {
         try {
             const response = await axios.get(api + '/products/' + id);
@@ -69,7 +90,10 @@ export default function Page({ params }: PageProps) {
         }
     }
 
-
+    const handleAddToCart = () => {
+        // เรียกใช้ฟังก์ชัน ProductServer และส่งข้อมูลที่ต้องการไป
+        ProductServer({ qty: quantity, pro_id: data?.id });
+    };
 
     // useEffect to fetch data when the component mounts
     useEffect(() => {
@@ -115,18 +139,21 @@ export default function Page({ params }: PageProps) {
                                     <strong className='text-danger'>ราคา {data?.pro_sellprice}฿</strong>
                                     <p className="text-success">คงเหลือ {data?.pro_qty} {data?.unit_name}</p>
                                     <hr />
-                                    <div className="row justify-content-center  g-3 align-items-center">
+
+                                    <div className="row justify-content-center g-3 align-items-center">
                                         <div className="col-md-4">
                                             <div className="input-group">
-                                                <button type="button" className="btn btn-success btn-sm">-</button>
-                                                <input type="text" className="form-control text-center form-control-sm" value={1} name='qty' readOnly />
-                                                <button type="button" className="btn btn-success btn-sm">+</button>
+                                                <button type="button" className="btn btn-success btn-sm" onClick={decreaseQuantity}>-</button>
+
+                                                <input type="text" className="form-control text-center form-control-sm" value={quantity} name='qty' readOnly />
+                                                <button type="button" className="btn btn-success btn-sm" onClick={increaseQuantity}>+</button>
                                             </div>
                                         </div>
                                         <div className="col-12 text-center">
-                                            <div className="btn btn-success btn-sm">เพิ่มสินค้าในตระกล้า</div>
+                                            <button className="btn btn-success btn-sm" type='submit' onClick={handleAddToCart}>เพิ่มสินค้าในตระกล้า</button>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

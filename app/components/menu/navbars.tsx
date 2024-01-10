@@ -1,7 +1,10 @@
-import React from 'react'
+'use client'
 import { PiShoppingCart } from "react-icons/pi";
 import Link from 'next/link';
+import { useAppContext } from "../qtyContext";
+
 export default function Navbars() {
+    const { Amount } = useAppContext();
     return (
         <>
 
@@ -30,7 +33,7 @@ export default function Navbars() {
                                 <Link className="nav-link position-relative" href="#">
                                     <PiShoppingCart />
                                     <span className="position-absolute start-100 translate-middle badge rounded-pill bg-danger">
-                                        0 <span className="visually-hidden">unread messages</span>
+                                        {Amount} <span className="visually-hidden">unread messages</span>
                                     </span>
                                 </Link>
 
