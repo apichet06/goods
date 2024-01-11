@@ -6,6 +6,7 @@ import Link from 'next/link';
 import React, { useCallback, useEffect, useState } from 'react';
 import { PiShoppingCart } from 'react-icons/pi';
 import { ProductServer } from '../productServer';
+import { useAppContext } from '@/app/components/qtyContext';
 
 
 // Define the pageProps interface
@@ -40,7 +41,7 @@ interface ProductType {
 export default function Page({ params }: PageProps) {
     // Destructure the id from params
     const { id } = params;
-
+    const { setAmount } = useAppContext()
 
 
     // State for storing product data
@@ -75,7 +76,6 @@ export default function Page({ params }: PageProps) {
         }
     }, [id]);
 
-
     const fetchProdctType = async (type_id: number) => {
 
         try {
@@ -95,10 +95,37 @@ export default function Page({ params }: PageProps) {
         ProductServer({ qty: quantity, pro_id: data?.id });
     };
 
-    // useEffect to fetch data when the component mounts
+
+
+
+    const GetAmount = useCallback(async () => {
+        try {
+            const response = await axios.get(api + '/cartIems');
+
+            if (response.status === 200) {
+                if (Array.isArray(response.data.data)) {
+                    const totalCartQty = response.data.data.reduce((acc: any, item: any) => acc + item.cart_qty, 0);
+                    setAmount(totalCartQty);
+                } else {
+                    console.log('Invalid data format');
+                    return 0;
+                }
+            }
+
+        } catch (error) {
+            return error
+        }
+
+    }, [])
+
+
+
+
+
     useEffect(() => {
         fetchData();
-    }, [fetchData]);
+        GetAmount()
+    }, [fetchData, GetAmount]);
 
     // Return the JSX to render
     return (

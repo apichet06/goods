@@ -4,6 +4,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import { PiShoppingCart } from "react-icons/pi";
 import { BsSearch } from "react-icons/bs";
+import { useAppContext } from './components/qtyContext';
 async function getProduct() {
   const response = await axios.get(api + '/products/1/20');
 
@@ -14,7 +15,51 @@ async function getProduct() {
   }
 }
 
+async function GetAmount() {
+  try {
+    const response = await axios.get(api + '/cartIems');
+
+    if (response.status === 200) {
+      if (Array.isArray(response.data.data)) {
+        const totalCartQty = response.data.data.reduce((acc: any, item: any) => acc + item.cart_qty, 0);
+        return totalCartQty
+      } else {
+        console.log('Invalid data format');
+        return 0;
+      }
+    }
+
+  } catch (error) {
+    return error
+  }
+
+}
+export async function getServerSideProps() {
+  try {
+    const products = await getProduct();
+    const amount = await GetAmount();
+
+    return {
+      props: {
+        products,
+        amount,
+      },
+    };
+  } catch (error: any) {
+    console.error(error.message);
+    return {
+      props: {
+        products: [],
+        amount: 0,
+      },
+    };
+  }
+}
+
 export default async function Page() {
+
+
+
   try {
     const products = await getProduct();
 
