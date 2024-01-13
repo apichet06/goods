@@ -96,8 +96,6 @@ export default function Page({ params }: PageProps) {
     };
 
 
-
-
     const GetAmount = useCallback(async () => {
         try {
             const response = await axios.get(api + '/cartIems');
@@ -117,9 +115,6 @@ export default function Page({ params }: PageProps) {
         }
 
     }, [])
-
-
-
 
 
     useEffect(() => {

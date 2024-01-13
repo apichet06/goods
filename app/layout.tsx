@@ -17,10 +17,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  amount,
+
 }: {
   children: React.ReactNode;
-  amount: number;
+
 }) {
   return (
     <html lang="en">
